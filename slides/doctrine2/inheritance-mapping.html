@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Doctrine Inheritance Mapping</title>
+	
+	<meta name="description" content="Presentation des concepts Doctrine Inheritance Mapping">
+	<meta name="author" content="Nathanaël Mariani">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="../../lib/deck.js/core/deck.core.css">
+	<link rel="stylesheet" href="../../lib/deck.js/extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="../../lib/deck.js/extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="../../lib/deck.js/extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="../../lib/deck.js/extensions/status/deck.status.css">
+	<link rel="stylesheet" href="../../lib/deck.js/extensions/hash/deck.hash.css">
+	
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="../../lib/deck.js/themes/style/swiss.css">
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="../../lib/deck.js/themes/transition/horizontal-slide.css">
+
+    <!-- Custom style sheets -->
+    <link rel="stylesheet" href="../css/style.css">
+
+	<script src="../../lib/deck.js/modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+<!-- Begin slides -->
+<section class="slide" id="title-slide">
+	<h1><img src="images/logo-doctrine.png"/>Doctrine Inheritance Mapping</h1>
+</section>
+
+<section class="slide">
+	<h2>Allo world</h2>
+	<p>Imaginons une application Allo World.</p>
+    <p>Nous souhaitons implémenter un carnet d'adresse qui permette de saisir :</p>
+    <ul>
+        <li class="slide">des particuliers (personnes physiques)
+            <ul>
+                <li>Civilité</li>
+                <li>Nom</li>
+                <li>Prénom</li>
+                <li>Numéro de portable</li>
+                <li><strong>Numéro de téléphone</strong></li>
+                <li><strong>Email</strong></li>
+            </ul>
+        </li>
+        <li class="slide">des professionnels (personnes morales)
+            <ul>
+                <li>Raison sociale</li>
+                <li>Siret</li>
+                <li>Tva intracom.</li>
+                <li>Numéro de fax</li>
+                <li><strong>Numéro de téléphone</strong></li>
+                <li><strong>Email</strong></li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>1ère possibilité d'implémentation</h2>
+    <h3>Base de données</h3>
+    <p>Une seule table qui contient toutes les colonnes + une colonne discriminante "type"</p>
+    <pre><code>CREATE TABLE `third` (
+    `id` int(10) unsigned NOT NULL auto_increment,
+    <strong>`type` varchar(20) NOT NULL,</strong>
+    `title` varchar(6) NOT NULL,
+    `lastname` varchar(80) NOT NULL,
+    `firstname` varchar(80) NOT NULL,
+    `company_name` varchar(80) NOT NULL,
+    `siret` varchar(14) NOT NULL,
+    `vat_number` varchar(14) NOT NULL,
+    `phone_number` varchar(10) NOT NULL,
+    `mobile_phone_number` varchar(10) NOT NULL,
+    `fax_number` varchar(10) NOT NULL,
+    `email` varchar(80) NOT NULL,
+    PRIMARY KEY  (`id`)
+) ENGINE=InnoDB;
+    </code></pre>
+</section>
+
+<section class="slide">
+    <h2>1ère possibilité d'implémentation</h2>
+    <h3>Classe PHP</h3>
+    <p>Une entité unique <strong>Third</strong>.</p>
+    <pre><code>/**
+ * @Entity
+ */
+class Third
+{
+    const TYPE_PERSON  = 'person';
+    const TYPE_COMPANY = 'company';
+
+    protected $id;
+    protected $type;
+    ...
+
+    public function __construct(){}
+
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+}</code></pre>
+</section>
+
+<section class="slide">
+    <h2>1ère possibilité d'implémentation</h2>
+    <h3>Des réactions ?</h3>
+    <ul>
+        <li>Cohérence</li>
+        <li>Simplicité</li>
+        <li>Qualité</li>
+        <li>Performance</li>
+        <li>...</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Problématique</h2>
+    <h3>Une entité par type de tiers</h3>
+    <p>On souhaite représenter chaque type de tiers par une entité propre (Person, Company)</p>
+    <h3 class="slide">Pourquoi?</h3>
+    <ul class="slide">
+        <li class="slide"><strong>S</strong>ingle Responsability</li>
+        <li class="slide"><strong>O</strong>pen/closed</li>
+        <li class="slide"><strong>L</strong>SP: Liskov Substitution Principle</li>
+        <li class="slide"><strong>I</strong>SP: Interface Segregation Principle</li>
+        <li class="slide"><strong>D</strong>IP: Dependency Inversion Principle</li>
+    </ul>
+    <h3 class="slide">Comment?</h3>
+    <p class="slide"><strong>Single Table Inheritance</strong></p>
+   <blockquote class="slide"><p>stratégie de mapping d'héritage où toutes les classes d'une hiérarchie sont mappées vers une même table de base de données.</p></blockquote>
+</section>
+
+<section class="slide">
+    <h2>2ème possibilité d'implémentation : Single Table Inheritance</h2>
+    <h3>Base de données</h3>
+    <p>Structure identique : une seule table qui contient toutes les colonnes + une colonne discriminante "type"</p>
+    <pre><code>CREATE TABLE `third` (
+    `id` int(10) unsigned NOT NULL auto_increment,
+    <strong>`type` varchar(20) NOT NULL,</strong>
+    `title` varchar(6) NOT NULL,
+    `lastname` varchar(80) NOT NULL,
+    `firstname` varchar(80) NOT NULL,
+    `company_name` varchar(80) NOT NULL,
+    `siret` varchar(14) NOT NULL,
+    `vat_number` varchar(14) NOT NULL,
+    `phone_number` varchar(10) NOT NULL,
+    `mobile_phone_number` varchar(10) NOT NULL,
+    `fax_number` varchar(10) NOT NULL,
+    `email` varchar(80) NOT NULL,
+    PRIMARY KEY  (`id`)
+) ENGINE=InnoDB;
+    </code></pre>
+</section>
+
+<section class="slide">
+    <h2>2ème possibilité d'implémentation : Single Table Inheritance</h2>
+    <h3>Classes PHP</h3>
+    <p>Une entité par type d'enregistrement.</p>
+    <pre><code>/**
+ * @Entity
+<strong> * @InheritanceType("SINGLE_TABLE")</strong>
+<strong> * @DiscriminatorColumn(name="discr", type="string")</strong>
+<strong> * @DiscriminatorMap({"person" = "Person", "company" = "Company"})</strong>
+*/
+abstract class Third {
+    protected $id;
+    protected $type;
+    ...
+}
+
+/**
+ * @Entity
+ */
+class Person extends Third {
+    const TYPE_PERSON  = 'person';
+}
+
+/**
+ * @Entity
+ */
+class Company extends Third {
+    const TYPE_COMPANY = 'company';
+}
+</code></pre>
+</section>
+
+<section class="slide">
+    <h2>2ème possibilité d'implémentation : Single Table Inheritance</h2>
+    <h3>Des réactions ?</h3>
+    <ul>
+        <li>Cohérence</li>
+        <li>Simplicité</li>
+        <li>Qualité</li>
+        <li>Performance</li>
+        <li>...</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>2ème possibilité d'implémentation : Single Table Inheritance</h2>
+    <h3>Dans quel contexte l'implémenter ?</h3>
+    <ul>
+        <li class="slide">hiérarchie des types simple et <strong>stable</strong></li>
+        <li class="slide">les types sont sensiblement similaires.</li>
+    </ul>
+    <p class="slide">Ajouter un nouveau type avec des champs spécifiques implique l'ajout de nouvelles colonnes à la table. Cela peut donc avoir un impact négatif.</p>
+    <h3 class="slide">Performances</h3>
+    <p class="slide">Cette stratégie est très efficace pour interroger tous les types de la hiérarchie ou seulement des types spécifiques.
+        <ul>
+            <li class="slide">Pas de jointure, seule une clause WHERE énumérant les identificateurs de type.</li>
+            <li class="slide">Les relations impliquant des types qui emploient cette stratégie de mapping sont très performantes.</li>
+        </ul>
+    </p>
+</section>
+
+<section class="slide">
+    <h2>Problématique</h2>
+    <h3>Appliquer les principes SOLID au design de la BDD</h3>
+    <h3 class="slide">Pourquoi?</h3>
+    <ul class="slide">
+        <li class="slide">Nous avons toujours n entités stockées dans 1 table</li>
+        <li class="slide">Tous les champs ne sont pas pertinents pour chaque type</li>
+        <li class="slide">Chaque ajout, modification, suppression d'une entité implique l'altération de la table</li>
+    </ul>
+    <h3 class="slide">Comment?</h3>
+    <p class="slide"><strong>Class Table Inheritance</strong></p>
+    <blockquote class="slide"><p>stratégie de mapping d'héritage où chaque classe d'une hiérarchie est mappée vers plusieurs tables.</p></blockquote>
+    <ul class="slide">
+        <li>La table qui lui est spécifique</li>
+        <li>Les tables correspondantes à chaque type parent dans la hiérarchie</li>
+    </ul>
+    <p class="slide">La table d'une classe fille est liée à celle de la classe parent via une clé étrangère. Chaque enregistrement partage ainsi le même id dans toutes les tables de la hiérarchie.</p>
+</section>
+
+<section class="slide">
+    <h2>3ème possibilité d'implémentation : Class Table Inheritance</h2>
+    <h3>Base de données</h3>
+    <p>Une table de base qui contient les champs communs + une colonne discriminante "type"
+       Une table par type qui contient uniquement les champs spécifiques.</p>
+    <pre><code>CREATE TABLE `third` (
+    `id` int(10) unsigned NOT NULL auto_increment,
+    <strong>`type` varchar(20) NOT NULL,</strong>
+    `phone_number` varchar(10) NOT NULL,
+    `email` varchar(80) NOT NULL,
+    PRIMARY KEY  (`id`)
+) ENGINE=InnoDB;
+CREATE TABLE `person` (
+    `id` int(10) unsigned NOT NULL,
+    `title` varchar(6) NOT NULL,
+    `lastname` varchar(80) NOT NULL,
+    `firstname` varchar(80) NOT NULL,
+    `mobile_phone_number` varchar(10) NOT NULL,
+    PRIMARY KEY  (`id`)
+) ENGINE=InnoDB;
+CREATE TABLE `company` (
+    `id` int(10) unsigned NOT NULL,
+    `company_name` varchar(80) NOT NULL,
+    `siret` varchar(14) NOT NULL,
+    `vat_number` varchar(14) NOT NULL,
+    `fax_number` varchar(10) NOT NULL,
+    PRIMARY KEY  (`id`)
+) ENGINE=InnoDB;
+    </code></pre>
+</section>
+
+<section class="slide">
+    <h2>3ème possibilité d'implémentation : Class Table Inheritance</h2>
+    <h3>Classes PHP</h3>
+    <p>Une entité par type d'enregistrement.</p>
+    <pre><code>/**
+ * @Entity
+<strong> * @InheritanceType("JOINED")</strong>
+ * @DiscriminatorColumn(name="discr", type="string")
+ * @DiscriminatorMap({"person" = "Person", "company" = "Company"})
+ */
+abstract class Third {
+    // common properties
+}
+
+/**
+ * @Entity
+ */
+class Person extends Third {
+    const TYPE_PERSON  = 'person';
+    // own properties
+}
+
+/**
+ * @Entity
+ */
+class Company extends Third {
+    const TYPE_COMPANY = 'company';
+    // own properties
+}</code></pre>
+</section>
+
+<section class="slide">
+    <h2>3ème possibilité d'implémentation : Class Table Inheritance</h2>
+    <h3>Des réactions ?</h3>
+    <ul>
+        <li>Cohérence</li>
+        <li>Simplicité</li>
+        <li>Qualité</li>
+        <li>Performance</li>
+        <li>...</li>
+    </ul>
+</section>
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../lib/deck.js/jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="../../lib/deck.js/core/deck.core.js"></script>
+<script src="../../lib/deck.js/extensions/hash/deck.hash.js"></script>
+<script src="../../lib/deck.js/extensions/menu/deck.menu.js"></script>
+<script src="../../lib/deck.js/extensions/goto/deck.goto.js"></script>
+<script src="../../lib/deck.js/extensions/status/deck.status.js"></script>
+<script src="../../lib/deck.js/extensions/navigation/deck.navigation.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>
