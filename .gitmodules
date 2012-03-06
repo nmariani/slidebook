@@ -1,0 +1,30 @@
+[submodule "lib/deck.js"]
+	path = lib/deck.js
+	url = git://github.com/imakewebthings/deck.js.git
+[submodule "lib/deck.js-codemirror"]
+	path = lib/deck.js-codemirror
+	url = git://github.com/iros/deck.js-codemirror.git
+[submodule "lib/deck.js-console-notes"]
+	path = lib/deck.js-console-notes
+	url = git://github.com/mikeharris100/deck.console-notes.js.git
+[submodule "lib/deck.js-remote-chrisjaure"]
+	path = lib/deck.js-remote-chrisjaure
+	url = git://github.com/chrisjaure/deckjs-remote.git
+[submodule "lib/deck.js-remote-seppo0010"]
+	path = lib/deck.js-remote-seppo0010
+	url = git://github.com/seppo0010/deck.remote.js.git
+[submodule "lib/deck.js-markdown"]
+	path = lib/deck.js-markdown
+	url = git://github.com/tmbrggmn/deck.js-markdown.git
+[submodule "lib/deck.js-pointer"]
+	path = lib/deck.js-pointer
+	url = git://github.com/mikeharris100/deck.pointer.js.git
+[submodule "lib/deck.js-presenterview"]
+	path = lib/deck.js-presenterview
+	url = git://github.com/stvnwrgs/presenterview.git
+[submodule "lib/deck.js-themes"]
+	path = lib/deck.js-themes
+	url = git://github.com/FluidInc/deck.js-themes.git
+[submodule "lib/deck.js-transition-cube"]
+	path = lib/deck.js-transition-cube
+	url = git://github.com/mikeharris100/deck.js-transition-cube.git
