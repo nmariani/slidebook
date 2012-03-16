@@ -1,0 +1,108 @@
+@media screen {
+
+    body {
+        width: 100%;
+        height: 100%;
+        font-size: 100%;
+    }
+
+    ul, p {
+        font-size: 120%;
+    }
+
+    body article span.timing {
+        display:none;
+    }
+
+    .navbar .nav.pull-right li{
+        margin-left: 10px;
+    }
+
+    .csstransforms.csstransitions #intro .slide {
+        visibility: visible;
+        opacity: 0;
+        -webkit-transition: color 300ms ease-in-out, opacity 300ms ease-in-out;
+        -moz-transition: color 300ms ease-in-out, opacity 300ms ease-in-out;
+        -ms-transition: color 300ms ease-in-out, opacity 300ms ease-in-out;
+        -o-transition: color 300ms ease-in-out, opacity 300ms ease-in-out;
+        transition: color 300ms ease-in-out, opacity 300ms ease-in-out;
+    }
+    .csstransforms.csstransitions #intro .deck-current, .csstransforms.csstransitions #intro .deck-before,
+    .csstransforms.csstransitions #intro .deck-previous {
+        opacity: 1;
+    }
+    .csstransforms.csstransitions #intro.deck-next h2, .csstransforms.csstransitions #intro.deck-next .note,
+    .csstransforms.csstransitions #intro.deck-before:not(.deck-child-current) h2,
+    .csstransforms.csstransitions #intro.deck-before:not(.deck-child-current) .note {
+        -webkit-transform: translate3d(0, -300%, 0);
+        -moz-transform: translate(0, -300%);
+        -ms-transform: translate(0, -300%);
+        -o-transform: translate(0, -300%);
+        transform: translate3d(0, -300%, 0);
+    }
+    .csstransforms.csstransitions #intro h2 {
+        -webkit-transition: -webkit-transform 300ms ease-in-out 200ms;
+        -moz-transition: -moz-transform 300ms ease-in-out 200ms;
+        -ms-transition: -ms-transform 300ms ease-in-out 200ms;
+        -o-transition: -o-transform 300ms ease-in-out 200ms;
+        transition: transform 300ms ease-in-out 200ms;
+    }
+    .csstransforms.csstransitions #intro .note {
+        -webkit-transition: -webkit-transform 300ms ease-in-out;
+        -moz-transition: -moz-transform 300ms ease-in-out;
+        -ms-transition: -ms-transform 300ms ease-in-out;
+        -o-transition: -o-transform 300ms ease-in-out;
+        transition: transform 300ms ease-in-out;
+    }
+
+    .csstransforms.csstransitions .on-slide-35 .deck-status {
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+        transform: scale(0);
+        -webkit-transition: -webkit-transform 100ms ease-in-out;
+        -moz-transition: -moz-transform 100ms ease-in-out;
+        -ms-transition: -ms-transform 100ms ease-in-out;
+        -o-transition: -o-transform 100ms ease-in-out;
+        transition: transform 100ms ease-in-out;
+    }
+
+    #round ul li {
+        vertical-align: middle;
+        padding:14px 45px;
+        margin:10px 0;
+        list-style-type: none;
+        background-size: 5%;
+    }
+    #round ul li:nth-of-type(1) {
+        background: url(../img/smiley_happy.png) no-repeat;
+    }
+    #round ul li:nth-of-type(2) {
+        background: url(../img/tv_screen_monitor_pc.png) no-repeat;
+    }
+    #round ul li:nth-of-type(3) {
+        background: url(../img/chat_talk_round.png) no-repeat;
+    }
+
+    #bilan ul li {
+        padding:14px 45px;
+        margin:10px 0;
+    }
+
+    #countdown {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        top: 50%;
+        left: 50%;
+        margin-top: -250px;
+        margin-left: -250px;
+        opacity: 0.08;
+    }
+
+    #countdown .display {
+        line-height: 500px;
+        font-size: 90px;
+    }
+}

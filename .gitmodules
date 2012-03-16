@@ -28,3 +28,9 @@
 [submodule "lib/deck.js-transition-cube"]
 	path = lib/deck.js-transition-cube
 	url = git://github.com/mikeharris100/deck.js-transition-cube.git
+[submodule "lib/twitter/bootstrap"]
+	path = lib/twitter/bootstrap
+	url = git://github.com/twitter/bootstrap.git
+[submodule "lib/cloudhead/less"]
+	path = lib/cloudhead/less
+	url = git://github.com/cloudhead/less.js.git

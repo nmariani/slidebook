@@ -1,0 +1,333 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Rétrospective Mars 2012</title>
+	<meta name="description" content="Rétrospective Mars 2012">
+	<meta name="author" content="Nathanaël Mariani">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Core and extension CSS files -->
+    <link rel="stylesheet" href="../../../lib/deck.js/core/deck.core.css">
+    <link rel="stylesheet" href="../../../lib/deck.js/extensions/goto/deck.goto.css">
+    <link rel="stylesheet" href="../../../lib/deck.js/extensions/menu/deck.menu.css">
+    <link rel="stylesheet" href="../../../lib/deck.js/extensions/navigation/deck.navigation.css">
+    <link rel="stylesheet" href="../../../lib/deck.js/extensions/status/deck.status.css">
+    <link rel="stylesheet" href="../../../lib/deck.js/extensions/hash/deck.hash.css">
+	
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="../../../lib/deck.js/themes/style/swiss.css">
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="../../../lib/deck.js/themes/transition/horizontal-slide.css">
+
+    <!-- Clock -->
+    <link rel="stylesheet" href="../../../lib/colorTime.js/colorClock.css" />
+
+    <!-- Common style sheet -->
+    <!--
+    <link rel="stylesheet/less" type="text/css" href="../../../assets/less/common.less">
+    <script src="../../../lib/cloudhead/less/dist/less-1.3.0.min.js" type="text/javascript"></script>
+    -->
+    <link rel="stylesheet" href="../../../assets/css/common.css">
+
+    <!-- Custom style sheets -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Modernizr -->
+    <script src="../../../lib/deck.js/modernizr.custom.js"></script>
+</head>
+
+<body class="home">
+<div id="countdown"></div>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">Rétrospective Mars 2012</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="active"></li>
+                </ul>
+                <ul class="nav pull-right">
+                    <li><div id="clock"></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<article class="container">
+    <!-- Begin slides -->
+    <section class="slide" id="hello">
+        <div>
+            <hgroup>
+                <h1>Rétrospective</h1>
+                <h2>Mars 2012</h2>
+            </hgroup>
+        </div>
+    </section>
+
+    <section class="slide" id="intro">
+        <h2>Introduction</h2>
+        <div class="note">
+            <h3>Contrat</h3>
+            <ul>
+                <li>Concision</li>
+                <li>Respect</li>
+                <li>Ecoute</li>
+                <li>Participation</li>
+                <li>Pas de tomate c'est ma première</li>
+            </ul>
+        </div>
+        <div class="slide">
+            <h3>Plan</h3>
+            <ul id="plan">
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide" id="round">
+        <span class="timing countdown">5</span>
+        <h2>Tour de table</h2>
+        <ul>
+            <li>Niko-Niko <strong>du jour</strong></li>
+            <li>Sur quoi avez-vous travaillé depuis la dernière rétro?</li>
+            <li>Qu'attendez-vous de celle-ci? De quoi voudriez-vous parler?</li>
+        </ul>
+    </section>
+
+    <section class="slide" id="feedback">
+        <span class="timing countdown">10</span>
+        <h2>Feedback</h2>
+        <p>Notez votre ressenti de 1 à 5 sur les sujets suivants :</p>
+        <ul>
+            <li class="slide">Confiance dans le projet webloc3 (choix techniques, état d'avancement, perspectives, ...)</li>
+            <li class="slide">Epanouissement personnel au sein de l'équipe</li>
+        </ul>
+        <div class="note">
+            <ul>
+                <li>1 : Alarmiste</li>
+                <li>2 : Pessimiste</li>
+                <li>3 : Moyen</li>
+                <li>4 : Bon</li>
+                <li>5 : Excellent</li>
+                <li></li>
+                <li>Explication en 2 ou 3 mots</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide" id="bilan">
+        <span class="timing">5</span>
+        <h2>Bilan précédent</h2>
+        <ul>
+            <li class="done">fhardy bugs manager -> todo@aixia-developpement.com</li>
+            <li class="done">Mise en place de tests fonctionnels -> jvinai tests manager </li>
+            <li class="inprogress">Déplacement des bureaux</li>
+            <li class="inprogress">Généralisation du pair-programming et du code review</li>
+            <li class="todo">Mise à jour de l'application démo en 2.1.6</li>
+            <li>Interruption d'un sprint dont le périmètre change</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <span class="timing">5</span>
+        <h2>Quelques données</h2>
+        <div>
+            <h3 class="center">Sprint "produits externes"</h3>
+            <img src="img/sprint-produits-externes.png" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <span class="timing">5</span>
+        <h2>Quelques données</h2>
+        <div>
+            <h3>Bugs Webloc 2.1</h3>
+            <img src="img/bugwar.png" />
+        </div>
+    </section>
+
+    <section class="slide">
+        <span class="timing countdown">20</span>
+        <h2>Timeline</h2>
+        <p>Notez ce qui vous a marqué durant la dernière itération.</p>
+        <div class="note">
+            <h3>Quoi?</h3>
+            <ul>
+                <li>Tout ce qui vous semble important</li>
+                <li>Evenement bon / mauvais</li>
+                <li>Satisfaction / désagrément</li>
+                <li>Coup de coeur / coup de gueule</li>
+            </ul>
+            <h3>Comment?</h3>
+            <ul>
+                <li>Une information par post-it</li>
+                <li>positif : post-it vert</li>
+                <li>neutre : post-it jaune</li>
+                <li>négatif : post-it orange</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <span class="timing countdown">10</span>
+        <h2>Vote</h2>
+        <p>Vous avez à votre disposition 3+ et 3-.</p>
+        <p class="slide">Pour chaque thématique principale, distribuez vos +/- selon votre avis :</p>
+        <ul class="slide">
+            <li class="slide">Mettez un + sur ce qui vous semble positif ou prioritaire</li>
+            <li class="slide">Mettez un - sur ce qui vous semble négatif</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <span class="timing countdown">5</span>
+        <h2>Langue de bois</h2>
+        <p>A partir des post-it les plus négatifs, chacun à tour de rôle doit :</p>
+        <ul class="slide">
+            <li class="slide">dire en une phrase l'inverse de ce qu'il pense</li>
+            <li class="slide">n'utiliser que des termes positifs</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <span class="timing countdown">15</span>
+        <h2>Analyse</h2>
+        <h3 class="slide">Root Cause Analysis : cherchons à remonter à l'origine de la problématique.</h3>
+        <p class="slide">A tour de rôle, chercher une cause possible à la cause précédemment trouvée.</p>
+        <h3 class="slide">Plan d'action : définissons des actions concrètes pour améliorer la prochaine itération.</h3>
+        <p class="slide">A tour de rôle, suggérer une solution.</p>
+    </section>
+
+    <section class="slide">
+        <span class="timing">5</span>
+        <h2>ROTI : Return On Time Invested</h2>
+        <div class="note"><img src="../assets/img/roti.jpg"/></div>
+        <h3 class="slide">Vote à doigts levés</h3>
+        <p class="slide">Chacun vote en assignant une note de 1 à 5 doigts sur la rétrospective</p>
+        <p class="slide">1 = j'ai perdu mon temps... 5 = c'était génial, ne nous quitte pas</p>
+    </section>
+
+    <section class="slide" id="goodbye">
+        <hgroup>
+            <h1>Merci</h1>
+            <ul>
+                <li>rétrospectivement de m'avoir supporter pendant 4 ans</li>
+                <li>présentement de votre indulgence pour cette rétrospective</li>
+                <li>dans un futur proche de prendre soin de mes oreilles</li>
+            </ul>
+        </hgroup>
+    </section>
+
+    <form action="." method="get" class="goto-form">
+        <label for="goto-slide">Go to slide:</label>
+        <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+        <datalist id="goto-datalist"></datalist>
+        <input type="submit" value="Go">
+    </form>
+
+    <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+    <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+    <p class="deck-status">
+        <span class="deck-status-current"></span>
+        /
+        <span class="deck-status-total"></span>
+    </p>
+</article>
+
+<footer>
+    <p><a href="http://twitter.com/nathmariani">@nathmariani</a></p>
+</footer>
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../../lib/deck.js/jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="../../../lib/deck.js/core/deck.core.js"></script>
+<script src="../../../lib/deck.js/extensions/hash/deck.hash.js"></script>
+<script src="../../../lib/deck.js/extensions/menu/deck.menu.js"></script>
+<script src="../../../lib/deck.js/extensions/goto/deck.goto.js"></script>
+<script src="../../../lib/deck.js/extensions/status/deck.status.js"></script>
+<script src="../../../lib/deck.js/extensions/navigation/deck.navigation.js"></script>
+
+<!-- Clock -->
+<script src="../../../lib/moment.js/moment.min.js"></script>
+
+<!-- Clock -->
+<script src="../../../lib/colorTime.js/colorCircle.js"></script>
+<script src="../../../lib/colorTime.js/colorClock.js"></script>
+<script src="../../../lib/colorTime.js/colorCountdown.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+    $.deck('.slide', {
+        selectors: {
+            container: 'body > article'
+        },
+
+        keys: {
+            goto: -1 // No key activation
+        }
+    });
+    $(document).bind('deck.change', function(event, from, to) {
+        var slide = $.deck('getSlide', to),
+            timing = slide ? slide.find('span.timing.countdown') : null;
+        slide = slide.get(0);
+        if(slide.nodeName=='SECTION') {
+            if(timing.length) {
+                $('#countdown').colorCountdown().setValue(parseInt(timing.text())*60).restart();
+            }else{
+                $('#countdown').colorCountdown().stop().reset();
+            }
+        }
+    });
+    Modernizr.addTest('pointerevents',function(){
+        return document.documentElement.style.pointerEvents === '';
+    });
+});
+$(document).ready(function(){
+    $('#clock').colorClock({
+        colorCircle: {
+            backgroundFillStyle:'#333333',
+            fillStyle:'#0092B9',
+            strokeStyle:'#0092B9'
+        },
+        fromDate: new Date()
+    }).start();
+    $('#countdown').colorCountdown({
+        colorCircle: {
+            backgroundFillStyle:'#cccccc',
+            fillStyle:'#86AD00',
+            strokeStyle:'#86AD00'
+        },
+        value: 5*60
+    });
+    var duration = null,
+        plan = $('#plan');
+    $('section.slide').each(function(index, section){
+        if(index > 1) {
+            section = $(section);
+            var timing = section.find('span.timing');
+                title = section.find('h2');
+            if(timing) {
+                timing = parseInt(timing.text());
+                if(!isNaN(timing))
+                    duration += timing;
+            }
+            if(title.length==1 && title.html().length>0)
+                plan.append($('<li>').html(title.html()));
+        }
+    });
+    $('.nav.pull-right').append($('<li>').html(duration+' min.'))
+});
+</script>
+
+</body>
+</html>
