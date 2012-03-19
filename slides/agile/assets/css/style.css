@@ -55,7 +55,7 @@
         transition: transform 300ms ease-in-out;
     }
 
-    .csstransforms.csstransitions .on-slide-35 .deck-status {
+    .csstransforms.csstransitions .on-slide-30 .deck-status {
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         -ms-transform: scale(0);
@@ -87,7 +87,27 @@
 
     #bilan ul li {
         padding:14px 45px;
-        margin:10px 0;
+	margin:10px 0;
+    }
+    #bilan {
+        background:url(../../aixia/img/fmusy.jpg) center right no-repeat;
+        background-size: 30%;
+    }
+
+    #nikoniko table {
+        width:100%;
+    }
+    #nikoniko table tr:nth-child(even) {
+        background: #ddd;
+    }
+    #nikoniko table td {
+        width:20%;
+        font-size: 120%;
+        padding: 10px 0;
+        text-align: center;
+    }
+    #nikoniko table td:last-child {
+        font-weight: bold;
     }
 
     #countdown {
