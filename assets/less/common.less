@@ -74,9 +74,6 @@
     div.note h3 {
         text-align: center;
     }
-    div.note ul {
-        list-style: none;
-    }
     div.note img {
         border:none;
     }
@@ -133,9 +130,9 @@
         transform: translate(0, -50%);
     }
     .csstransforms.csstransitions #hello.deck-previous h1, .csstransforms.csstransitions #hello.deck-previous h2,
-    .csstransforms.csstransitions #goodbye.deck-previous h1, .csstransforms.csstransitions #goodbye.deck-previous h2,
+    .csstransforms.csstransitions #goodbye.deck-previous h1, .csstransforms.csstransitions #goodbye.deck-previous ul,
     .csstransforms.csstransitions #hello.deck-before h1, .csstransforms.csstransitions #hello.deck-before h2,
-    .csstransforms.csstransitions #goodbye.deck-before h1, .csstransforms.csstransitions #goodbye.deck-before h2 {
+    .csstransforms.csstransitions #goodbye.deck-before h1, .csstransforms.csstransitions #goodbye.deck-before ul {
         -webkit-transform: translate3d(-300%, 0, 0);
         -moz-transform: translate(-300%, 0);
         -ms-transform: translate(-300%, 0);
@@ -151,7 +148,7 @@
         transition: transform 300ms ease-in-out;
     }
     .csstransforms.csstransitions #hello h2,
-    .csstransforms.csstransitions #goodbye h2 {
+    .csstransforms.csstransitions #goodbye ul {
         -webkit-transition: -webkit-transform 300ms ease-in-out 100ms;
         -moz-transition: -moz-transform 300ms ease-in-out 100ms;
         -ms-transition: -ms-transform 300ms ease-in-out 100ms;

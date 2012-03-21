@@ -55,7 +55,7 @@
         transition: transform 300ms ease-in-out;
     }
 
-    .csstransforms.csstransitions .on-slide-30 .deck-status {
+    .csstransforms.csstransitions .on-slide-34 .deck-status {
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         -ms-transform: scale(0);
@@ -110,6 +110,11 @@
         font-weight: bold;
     }
 
+    #feedback-result img {
+        display: inline;
+        width:540px;
+    }
+
     #countdown {
         position: absolute;
         width: 500px;
@@ -118,11 +123,37 @@
         left: 50%;
         margin-top: -250px;
         margin-left: -250px;
-        opacity: 0.08;
+        opacity: 0.10;
     }
 
     #countdown .display {
         line-height: 500px;
         font-size: 90px;
+    }
+
+    .carousel {
+        position:absolute;
+        display: block;
+        overflow: hidden;
+        top:75px;
+        right:10px;
+        width:300px;
+        height: 400px;
+        -webkit-box-shadow: 0 0 0px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 0 0px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.3);
+    }
+    .carousel img {
+        z-index: 1;
+    }
+    .carousel-caption {
+        z-index: 2;
+        
+    }
+    .carousel-caption h4 {
+        font-size: 100%;
+    }
+    .carousel-caption p {
+        font-size: 100%;
     }
 }
