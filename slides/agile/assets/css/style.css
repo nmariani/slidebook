@@ -14,11 +14,15 @@
         display:none;
     }
 
-    .navbar .nav.pull-right li{
+    .navbar a.brand {
+        padding: 16px;
+    }
+
+    .navbar .nav.pull-right li {
         margin-left: 10px;
     }
 
-    .navbar .nav.pull-right li.duration{
+    .navbar .nav.pull-right li.duration {
         margin-top: 15px;
     }
 
