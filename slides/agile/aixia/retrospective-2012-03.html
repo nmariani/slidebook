@@ -400,7 +400,8 @@
 </footer>
 
 <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../../lib/deck.js/jquery-1.7.min.js"><\/script>')</script>
 
 <!-- Deck Core and extensions -->
@@ -412,7 +413,7 @@
 <script src="../../../lib/deck.js/extensions/navigation/deck.navigation.js"></script>
 
 <!-- Clock -->
-<script src="../../../lib/moment.js/moment.min.js"></script>
+<script src="../../../lib/moment.js/min/moment.min.js"></script>
 
 <!-- Clock -->
 <script src="../../../lib/colorTime.js/colorCircle.js"></script>
@@ -493,7 +494,7 @@ $(document).ready(function(){
                 plan.append($('<li>').html(title.html()));
         }
     });
-    $('.nav.pull-right').append($('<li>').html(duration+' min.'));
+    $('.nav.pull-right').append($('<li class="duration">').html(duration+' min.'));
 });
 </script>
 
