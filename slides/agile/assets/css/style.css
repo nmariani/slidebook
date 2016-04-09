@@ -14,6 +14,18 @@
         display:none;
     }
 
+    .text-error {
+        color: #b94a48;
+    }
+
+    .text-success {
+        color: #468847;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
     .navbar a.brand {
         padding: 16px;
     }
