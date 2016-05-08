@@ -126,6 +126,10 @@
     #nikoniko table td:last-child {
         font-weight: bold;
     }
+    #nikoniko img {
+        max-height: 96px;
+        margin: 0 auto;
+    }
 
     #feedback-result img {
         display: inline;
